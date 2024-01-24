@@ -1,0 +1,33 @@
+{
+	"name": "Githubfeaturebranchdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "orderstbl.csv",
+				"folderPath": "fld",
+				"fileSystem": "broxz"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "1001",
+				"type": "String"
+			},
+			{
+				"name": "orderome",
+				"type": "String"
+			}
+		]
+	}
+}
