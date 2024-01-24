@@ -8,6 +8,9 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
 		"LinkedServiceForLookUpActivity_connectionString": {
 			"value": "Integrated Security=False;Data Source=DESKTOP-M1FGUD1\\SQLEXPRESS;Initial Catalog=AdventuresWorksLT2017;User ID=userfive"
 		},
@@ -27,6 +30,9 @@
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://rajgen2lakact.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"value": "https://rajgen2lakact.dfs.core.windows.net/"
 		},
 		"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId": {

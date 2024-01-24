@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
 		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
 		"LinkedServiceForLookUpActivity_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LinkedServiceForLookUpActivity'",
@@ -38,6 +42,10 @@
 			"metadata": "Secure string for 'accountKey' of 'ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://rajgen2lakact.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://rajgen2lakact.dfs.core.windows.net/"
 		},
@@ -87,6 +95,9 @@
 					"AzureDataLakeStorage1_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
 					"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_accessToken": {
 						"value": "[parameters('LinkedServicebetweenAzureDataFactoryandAzureDatabricks_accessToken')]"
 					},
@@ -108,6 +119,9 @@
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
 					"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId')]"
 					},
@@ -123,6 +137,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "ETLcloudfacto_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ETLcloudfacto_ArmTemplate_0')]"
+			]
 		}
 	]
 }
