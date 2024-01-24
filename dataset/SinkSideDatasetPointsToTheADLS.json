@@ -1,0 +1,33 @@
+{
+	"name": "SinkSideDatasetPointsToTheADLS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filenamelooklike": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filenamelooklike",
+					"type": "Expression"
+				},
+				"folderPath": "bronzefolderone",
+				"fileSystem": "bronzecontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

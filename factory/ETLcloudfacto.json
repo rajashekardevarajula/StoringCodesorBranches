@@ -1,0 +1,9 @@
+{
+	"name": "ETLcloudfacto",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "82259ef1-69d2-4414-9371-3be65ec0ae94",
+		"tenantId": "debb158e-efeb-4ba7-9e27-6de0e9031cd2"
+	}
+}

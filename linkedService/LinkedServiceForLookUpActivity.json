@@ -1,0 +1,23 @@
+{
+	"name": "LinkedServiceForLookUpActivity",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Data Source=DESKTOP-M1FGUD1\\SQLEXPRESS;Initial Catalog=AdventuresWorksLT2017;User ID=userfive",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ThisistheLinkedservicethatconnectADFandkeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "SQLpassword"
+			}
+		},
+		"connectVia": {
+			"referenceName": "selfhostedIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

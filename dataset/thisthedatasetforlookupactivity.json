@@ -1,0 +1,26 @@
+{
+	"name": "thisthedatasetforlookupactivity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedServiceForLookUpActivity",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Schema_name",
+				"type": "varchar"
+			},
+			{
+				"name": "Table_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "configtblforlookupact"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
