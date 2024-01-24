@@ -1,0 +1,128 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ETLcloudfacto"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"LinkedServiceForLookUpActivity_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedServiceForLookUpActivity'",
+			"defaultValue": "Integrated Security=False;Data Source=DESKTOP-M1FGUD1\\SQLEXPRESS;Initial Catalog=AdventuresWorksLT2017;User ID=userfive"
+		},
+		"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LinkedServicebetweenAzureDataFactoryandAzureDatabricks'"
+		},
+		"SqlServer1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
+		},
+		"ThisIsTheLinkedServiceForSourceDataSetThatPointsToSQLServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ThisIsTheLinkedServiceForSourceDataSetThatPointsToSQLServer'",
+			"defaultValue": "Integrated Security=False;Data Source=DESKTOP-M1FGUD1\\SQLEXPRESS;Initial Catalog=AdventuresWorksLT2017;User ID=userfive"
+		},
+		"ThisIsTheLinkedServiceLinkingADFAndADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ThisIsTheLinkedServiceLinkingADFAndADLS'"
+		},
+		"ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://rajgen2lakact.dfs.core.windows.net/"
+		},
+		"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0116-135058-lexrpkqg"
+		},
+		"ThisIsTheLinkedServiceLinkingADFAndADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://rajgen2lakact.dfs.core.windows.net/"
+		},
+		"ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://rajgen2lakact.dfs.core.windows.net/"
+		},
+		"ThisistheLinkedservicethatconnectADFandkeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvaultSQLpasswd.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ETLcloudfacto_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_accessToken": {
+						"value": "[parameters('LinkedServicebetweenAzureDataFactoryandAzureDatabricks_accessToken')]"
+					},
+					"ThisIsTheLinkedServiceLinkingADFAndADLS_accountKey": {
+						"value": "[parameters('ThisIsTheLinkedServiceLinkingADFAndADLS_accountKey')]"
+					},
+					"ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_accountKey": {
+						"value": "[parameters('ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_accountKey')]"
+					},
+					"LinkedServiceForLookUpActivity_connectionString": {
+						"value": "[parameters('LinkedServiceForLookUpActivity_connectionString')]"
+					},
+					"SqlServer1_connectionString": {
+						"value": "[parameters('SqlServer1_connectionString')]"
+					},
+					"ThisIsTheLinkedServiceForSourceDataSetThatPointsToSQLServer_connectionString": {
+						"value": "[parameters('ThisIsTheLinkedServiceForSourceDataSetThatPointsToSQLServer_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('LinkedServicebetweenAzureDataFactoryandAzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
+					"ThisIsTheLinkedServiceLinkingADFAndADLS_properties_typeProperties_url": {
+						"value": "[parameters('ThisIsTheLinkedServiceLinkingADFAndADLS_properties_typeProperties_url')]"
+					},
+					"ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_properties_typeProperties_url": {
+						"value": "[parameters('ThisIsTheSinkedSideLinkedServiceLinkingADFAndADLS_properties_typeProperties_url')]"
+					},
+					"ThisistheLinkedservicethatconnectADFandkeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ThisistheLinkedservicethatconnectADFandkeyVault_properties_typeProperties_baseUrl')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
